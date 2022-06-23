@@ -37,13 +37,12 @@ import {
 function App() {
   return (
     <ChakraProvider theme={theme}>
-      <Navbar />
-      {/* <Landing /> */}
       <Box
         backgroundImage={BEARVBULL_BG}
         //backgroundAttachment="fixed"
         backgroundSize="contain"
       >
+        <Navbar />
         <Hero />
         <Hero />
       </Box>
