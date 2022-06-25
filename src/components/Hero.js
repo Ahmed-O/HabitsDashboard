@@ -30,26 +30,93 @@ export default function Hero() {
       <Stack
         align={'center'}
         spacing={{ base: 8, md: 10 }}
-        py={{ base: 20, md: 28 }}
+        py={{ base: 10, md: 14 }}
         direction={{ base: 'column', lg: 'row' }}
       >
-        <Box
-          position={'relative'}
-          height={'350px'}
-          // rounded={'2xl'}
-          // boxShadow={'2xl'}
-          width={{ base: '100%', lg: '40%' }}
-          overflow={'hidden'}
+        <Stack
+          flex={1}
+          spacing={{ base: 5, md: 10 }}
+          rounded={'2xl'}
+          boxShadow={'10px'}
+          //   border="solid 3px black"
+          minH="450px"
+          align="center"
+          justify="center"
+          //   backgroundColor={'rgba(198,246,213,0.3)'}
+          //backgroundColor={'green.50'}
         >
-          <Image
-            alt={'Hero Image'}
-            fit={'contain'}
-            align={'center'}
-            w={'100%'}
-            h={'100%'}
-            src={'images/signinhero.png'}
-          />
-        </Box>
+          <Heading
+            lineHeight={0.9}
+            fontWeight={700}
+            fontSize={{ base: '3xl', sm: '4xl', lg: '6xl' }}
+            // pt={10}
+            // pl={{ base: '10px', xl: '20px' }}
+          >
+            <Text
+              as={'span'}
+              position={'relative'}
+              _after={{
+                content: "''",
+                width: 'full',
+                height: '30%',
+                position: 'absolute',
+                bottom: 1,
+                left: 0,
+                bg: 'green.500',
+                zIndex: -1,
+              }}
+              color={useColorModeValue('black', 'green.500')}
+            >
+              Trader Dashboard
+            </Text>
+            <br />
+            <Text
+              as={'span'}
+              color={'green.700'}
+              fontSize={{ base: '2xl', sm: '3xl', lg: '5xl' }}
+              fontWeight={700}
+            >
+              improve your trading today
+            </Text>
+          </Heading>
+          <Text
+            color={'black'}
+            fontSize="2xl"
+            fontWeight={700}
+            pl={{ base: '10px', xl: '25px' }}
+            pr={{ base: '10px', xl: '25px' }}
+          >
+            A platform for traders by traders intended to serve as a one stop
+            location to analyze your trades and trading performance.
+          </Text>
+          <Stack
+            spacing={{ base: 4, sm: 6 }}
+            direction={{ base: 'column', sm: 'row' }}
+            p={5}
+          >
+            {/* Google */}
+            <Button
+              w={'full'}
+              variant={'outline'}
+              leftIcon={<FcGoogle />}
+              backgroundColor="white"
+            >
+              <Center>
+                <Text>Sign up with Google</Text>
+              </Center>
+            </Button>
+            {/* Facebook */}
+            <Button
+              w={'full'}
+              colorScheme={'facebook'}
+              leftIcon={<FaFacebook />}
+            >
+              <Center>
+                <Text>Sign Up with Facebook</Text>
+              </Center>
+            </Button>
+          </Stack>
+        </Stack>
 
         <Flex
           flex={1}
@@ -62,7 +129,7 @@ export default function Hero() {
             w={'150%'}
             h={'150%'}
             position={'absolute'}
-            top={'-20%'}
+            top={'-40%'}
             left={0}
             zIndex={-1}
             color={useColorModeValue('green.100', 'green.900')}
@@ -95,90 +162,24 @@ export default function Hero() {
               h={'100%'}
               src={'images/signinhero.png'}
             /> */}
-          <Stack
-            flex={1}
-            spacing={{ base: 5, md: 10 }}
-            rounded={'2xl'}
-            boxShadow={'10px'}
-            //   border="solid 3px black"
-            minH="450px"
-            align="center"
-            justify="center"
-            //   backgroundColor={'rgba(198,246,213,0.3)'}
-            //backgroundColor={'green.50'}
+          <Box
+            position={'relative'}
+            height={'350px'}
+            // rounded={'2xl'}
+            // boxShadow={'2xl'}
+            width={{ base: '100%', lg: '100%' }}
+            overflow={'hidden'}
           >
-            <Heading
-              lineHeight={0.9}
-              fontWeight={700}
-              fontSize={{ base: '3xl', sm: '4xl', lg: '6xl' }}
-              // pt={10}
-              // pl={{ base: '10px', xl: '20px' }}
-            >
-              <Text
-                as={'span'}
-                position={'relative'}
-                _after={{
-                  content: "''",
-                  width: 'full',
-                  height: '30%',
-                  position: 'absolute',
-                  bottom: 1,
-                  left: 0,
-                  bg: 'green.500',
-                  zIndex: -1,
-                }}
-                color={useColorModeValue('black', 'green.500')}
-              >
-                Trader Dashboard
-              </Text>
-              <br />
-              <Text
-                as={'span'}
-                color={'green.700'}
-                fontSize={{ base: '2xl', sm: '3xl', lg: '5xl' }}
-                fontWeight={700}
-              >
-                improve your trading today
-              </Text>
-            </Heading>
-            <Text
-              color={'black'}
-              fontSize="2xl"
-              fontWeight={700}
-              pl={{ base: '10px', xl: '25px' }}
-              pr={{ base: '10px', xl: '25px' }}
-            >
-              A platform for traders by traders intended to serve as a one stop
-              location to analyze your trades and trading performance.
-            </Text>
-            <Stack
-              spacing={{ base: 4, sm: 6 }}
-              direction={{ base: 'column', sm: 'row' }}
-              p={5}
-            >
-              {/* Google */}
-              <Button
-                w={'full'}
-                variant={'outline'}
-                leftIcon={<FcGoogle />}
-                backgroundColor="white"
-              >
-                <Center>
-                  <Text>Sign up with Google</Text>
-                </Center>
-              </Button>
-              {/* Facebook */}
-              <Button
-                w={'full'}
-                colorScheme={'facebook'}
-                leftIcon={<FaFacebook />}
-              >
-                <Center>
-                  <Text>Sign Up with Facebook</Text>
-                </Center>
-              </Button>
-            </Stack>
-          </Stack>
+            <Image
+              alt={'Hero Image'}
+              fit={'contain'}
+              align={'center'}
+              w={'100%'}
+              h={'100%'}
+              src={'images/signinhero.png'}
+            />
+          </Box>
+
           {/* </Box> */}
         </Flex>
       </Stack>

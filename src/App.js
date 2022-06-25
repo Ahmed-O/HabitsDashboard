@@ -24,6 +24,7 @@ import { ColorModeSwitcher } from './components/ColorModeSwitcher';
 import Navbar from './components/Navbar';
 import Landing from './components/Landing';
 import Hero from './components/Hero';
+import SignIn from './components/SignIn';
 import {
   HERO_BACKGROUND,
   MOUNTAIN_BG,
@@ -37,15 +38,15 @@ import {
 function App() {
   return (
     <ChakraProvider theme={theme}>
-      <Box
-        backgroundImage={BEARVBULL_BG}
-        //backgroundAttachment="fixed"
-        backgroundSize="contain"
+      {/* <Box
+        backgroundImage={MOUNTAIN_BG}
+        backgroundAttachment="fixed"
+        backgroundSize="cover"
       >
         <Navbar />
         <Hero />
-        <Hero />
-      </Box>
+      </Box> */}
+      <SignIn />
     </ChakraProvider>
   );
 }
