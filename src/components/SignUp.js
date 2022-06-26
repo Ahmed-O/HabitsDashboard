@@ -31,7 +31,7 @@ import {
   CHARTS_BG2,
 } from './HeroBackground';
 
-export default function SignIn() {
+export default function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
@@ -47,7 +47,7 @@ export default function SignIn() {
       <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
         <Stack align={'center'}>
           <Heading fontSize={'4xl'} textAlign={'center'}>
-            Sign In
+            Sign Up
           </Heading>
           <Text fontSize={'lg'} color={'gray.600'}>
             to enjoy all of our cool features ✌️
@@ -103,13 +103,36 @@ export default function SignIn() {
                 </InputRightElement>
               </InputGroup>
             </FormControl>
+            <FormControl id="password" isRequired>
+              <FormLabel>Confirm Password</FormLabel>
+              <InputGroup>
+                <Input type={showPassword ? 'text' : 'password'} />
+                <InputRightElement h={'full'}>
+                  <Button
+                    variant={'ghost'}
+                    onClick={() =>
+                      setShowPassword(showPassword => !showPassword)
+                    }
+                  >
+                    {showPassword ? (
+                      <Box>
+                        <FaEye />
+                      </Box>
+                    ) : (
+                      <Box>
+                        <FaEyeSlash />
+                      </Box>
+                    )}
+                  </Button>
+                </InputRightElement>
+              </InputGroup>
+            </FormControl>
             <Stack
               direction={{ base: 'column', sm: 'row' }}
               align={'start'}
               justify={'space-between'}
             >
               <Checkbox>Remember me</Checkbox>
-              <Link color={'blue.400'}>Forgot password?</Link>
             </Stack>
             <Stack spacing={3} pt={2}>
               <Button
@@ -121,7 +144,7 @@ export default function SignIn() {
                   bg: 'blue.500',
                 }}
               >
-                Sign In
+                Sign Up
               </Button>
               {/* Google */}
               <Button
@@ -131,13 +154,13 @@ export default function SignIn() {
                 backgroundColor="white"
               >
                 <Center>
-                  <Text>Continue with Google</Text>
+                  <Text>Register with Google</Text>
                 </Center>
               </Button>
             </Stack>
             <Stack pt={6}>
               <Text align={'center'}>
-                Don't have an account? <Link color={'blue.400'}>Sign Up</Link>
+                Already a user? <Link color={'blue.400'}>Login</Link>
               </Text>
             </Stack>
           </Stack>

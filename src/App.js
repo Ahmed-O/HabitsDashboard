@@ -25,6 +25,7 @@ import Navbar from './components/Navbar';
 import Landing from './components/Landing';
 import Hero from './components/Hero';
 import SignIn from './components/SignIn';
+import SignUp from './components/SignUp';
 import {
   HERO_BACKGROUND,
   MOUNTAIN_BG,
@@ -46,7 +47,8 @@ function App() {
         <Navbar />
         <Hero />
       </Box> */}
-      <SignIn />
+      {/* <SignIn /> */}
+      <SignUp />
     </ChakraProvider>
   );
 }
