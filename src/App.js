@@ -39,16 +39,16 @@ import {
 function App() {
   return (
     <ChakraProvider theme={theme}>
-      {/* <Box
+      <Box
         backgroundImage={MOUNTAIN_BG}
         backgroundAttachment="fixed"
         backgroundSize="cover"
       >
         <Navbar />
         <Hero />
-      </Box> */}
+      </Box>
       {/* <SignIn /> */}
-      <SignUp />
+      {/* <SignUp /> */}
     </ChakraProvider>
   );
 }

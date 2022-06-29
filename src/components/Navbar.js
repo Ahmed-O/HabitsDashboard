@@ -72,8 +72,11 @@ export default function Navbar() {
             </HStack>
           </HStack>
           <Flex alignItems={'center'}>
-            <Button variant={'solid'} colorScheme={'teal'} size={'lg'} mr={7}>
+            <Button variant={'solid'} bgColor={'white'} size={'lg'} mr={3}>
               Sign In
+            </Button>
+            <Button variant={'solid'} colorScheme={'teal'} size={'lg'} mr={3}>
+              Sign Up
             </Button>
             {/* <ColorModeSwitcher mr={7} /> */}
             {/* <Menu>

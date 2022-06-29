@@ -91,9 +91,18 @@ export default function Hero() {
           </Text>
           <Stack
             spacing={{ base: 4, sm: 6 }}
-            direction={{ base: 'column', sm: 'row' }}
-            p={5}
+            direction={{ base: 'column', md: 'column' }}
+            w={'75%'}
           >
+            <Button
+              w={'full'}
+              colorScheme={'teal'}
+              //leftIcon={<FaFacebook />}
+            >
+              <Center>
+                <Text> Sign Up </Text>
+              </Center>
+            </Button>
             {/* Google */}
             <Button
               w={'full'}
@@ -103,16 +112,6 @@ export default function Hero() {
             >
               <Center>
                 <Text>Sign up with Google</Text>
-              </Center>
-            </Button>
-            {/* Facebook */}
-            <Button
-              w={'full'}
-              colorScheme={'facebook'}
-              leftIcon={<FaFacebook />}
-            >
-              <Center>
-                <Text>Sign Up with Facebook</Text>
               </Center>
             </Button>
           </Stack>
