@@ -18,6 +18,7 @@ import {
 } from '@chakra-ui/react';
 import { FcGoogle } from 'react-icons/fc';
 import { FaFacebook } from 'react-icons/fa';
+import { Link as RouterLink } from 'react-router-dom';
 
 export default function Hero() {
   return (
@@ -94,15 +95,17 @@ export default function Hero() {
             direction={{ base: 'column', md: 'column' }}
             w={'75%'}
           >
-            <Button
-              w={'full'}
-              colorScheme={'teal'}
-              //leftIcon={<FaFacebook />}
-            >
-              <Center>
-                <Text> Sign Up </Text>
-              </Center>
-            </Button>
+            <RouterLink to="/signup">
+              <Button
+                w={'full'}
+                colorScheme={'teal'}
+                //leftIcon={<FaFacebook />}
+              >
+                <Center>
+                  <Text>Sign Up</Text>
+                </Center>
+              </Button>
+            </RouterLink>
             {/* Google */}
             <Button
               w={'full'}

@@ -20,6 +20,7 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import { AiOutlineClose } from 'react-icons/ai';
 import { GiSemiClosedEye } from 'react-icons/gi';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
+import { Link as RouterLink } from 'react-router-dom';
 
 const Links = ['Dashboard', 'Resources', 'FAQ'];
 
@@ -72,12 +73,16 @@ export default function Navbar() {
             </HStack>
           </HStack>
           <Flex alignItems={'center'}>
-            <Button variant={'solid'} bgColor={'white'} size={'lg'} mr={3}>
-              Sign In
-            </Button>
-            <Button variant={'solid'} colorScheme={'teal'} size={'lg'} mr={3}>
-              Sign Up
-            </Button>
+            <RouterLink to="/signin">
+              <Button variant={'solid'} bgColor={'white'} size={'lg'} mr={3}>
+                Sign In
+              </Button>
+            </RouterLink>
+            <RouterLink to="/signin">
+              <Button variant={'solid'} colorScheme={'teal'} size={'lg'} mr={3}>
+                Sign Up
+              </Button>
+            </RouterLink>
             {/* <ColorModeSwitcher mr={7} /> */}
             {/* <Menu>
               <MenuButton

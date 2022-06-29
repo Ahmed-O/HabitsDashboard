@@ -19,6 +19,7 @@ import {
   Flex,
   theme,
 } from '@chakra-ui/react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ColorModeSwitcher } from './components/ColorModeSwitcher';
 
 import Navbar from './components/Navbar';
@@ -39,14 +40,33 @@ import {
 function App() {
   return (
     <ChakraProvider theme={theme}>
-      <Box
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Box
+                backgroundImage={MOUNTAIN_BG}
+                backgroundAttachment="fixed"
+                backgroundSize="cover"
+              >
+                <Navbar />
+                <Hero />
+              </Box>
+            }
+          />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
+        </Routes>
+      </BrowserRouter>
+      {/* <Box
         backgroundImage={MOUNTAIN_BG}
         backgroundAttachment="fixed"
         backgroundSize="cover"
       >
         <Navbar />
         <Hero />
-      </Box>
+      </Box> */}
       {/* <SignIn /> */}
       {/* <SignUp /> */}
     </ChakraProvider>

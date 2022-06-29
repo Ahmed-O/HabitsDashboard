@@ -17,6 +17,7 @@ import {
   Link,
   calc,
 } from '@chakra-ui/react';
+import { Link as RouterLink } from 'react-router-dom';
 import { useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
@@ -160,7 +161,10 @@ export default function SignUp() {
             </Stack>
             <Stack pt={6}>
               <Text align={'center'}>
-                Already a user? <Link color={'blue.400'}>Login</Link>
+                Already a user?{' '}
+                <RouterLink to="/signin">
+                  <Link color={'blue.400'}>Login</Link>
+                </RouterLink>
               </Text>
             </Stack>
           </Stack>
