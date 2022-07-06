@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { useState } from 'react';
 import {
   IconButton,
   Box,
@@ -11,9 +11,7 @@ import {
   DrawerContent,
   Text,
   useDisclosure,
-  BoxProps,
-  FlexProps,
-  HStack,
+  Stack,
 } from '@chakra-ui/react';
 import {
   FiHome,
@@ -30,22 +28,26 @@ import TradesTable from './TradesTable';
 import Home from './Home';
 import Reports from './Reports';
 import Import from './Import';
+import View from './View';
 
 const LinkItems = [
   { name: 'Home', icon: FiHome },
   { name: 'Reports', icon: FiTrendingUp },
   { name: 'View', icon: AiOutlineTable },
-  //   { name: 'Journal', icon: FiStar },
   { name: 'Import', icon: FiDownload },
 ];
 
+const LinkComponents = [<Home />, <Reports />, <View />, <Import />];
+
 export default function SimpleSidebar({ children }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [currIndex, setCurrIndex] = useState(0);
   return (
-    <HStack maxW={'100vw'} pr={10}>
-      <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')}>
+    <Stack direction={{ base: 'column', md: 'row' }} maxW={'100vw'}>
+      <Box bg={useColorModeValue('gray.100', 'gray.900')}>
         <SidebarContent
           onClose={() => onClose}
+          setCurrIndex={setCurrIndex}
           display={{ base: 'none', md: 'block' }}
         />
         <Drawer
@@ -58,21 +60,26 @@ export default function SimpleSidebar({ children }) {
           size="full"
         >
           <DrawerContent>
-            <SidebarContent onClose={onClose} />
+            <SidebarContent onClose={onClose} setCurrIndex={setCurrIndex} />
           </DrawerContent>
         </Drawer>
         {/* mobilenav */}
         <MobileNav display={{ base: 'flex', md: 'none' }} onOpen={onOpen} />
-        <Box ml={{ base: 0, md: 60 }} p="4">
-          {children}
-        </Box>
+        <Box ml={{ base: 0, md: 60 }}>{children}</Box>
       </Box>
-      <TradesTable />
-    </HStack>
+      {LinkComponents[currIndex]}
+    </Stack>
   );
 }
 
-const SidebarContent = ({ onClose, ...rest }) => {
+const SidebarContent = ({ onClose, setCurrIndex, ...rest }) => {
+  function changePage(pageName) {
+    if (pageName === 'Home') setCurrIndex(0);
+    else if (pageName === 'Reports') setCurrIndex(1);
+    else if (pageName === 'View') setCurrIndex(2);
+    else if (pageName === 'Import') setCurrIndex(3);
+    onClose();
+  }
   return (
     <Box
       bg={useColorModeValue('white', 'gray.900')}
@@ -101,7 +108,11 @@ const SidebarContent = ({ onClose, ...rest }) => {
         <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       </Flex>
       {LinkItems.map(link => (
-        <NavItem key={link.name} icon={link.icon}>
+        <NavItem
+          key={link.name}
+          icon={link.icon}
+          onClick={() => changePage(link.name)}
+        >
           {link.name}
         </NavItem>
       ))}
@@ -169,7 +180,9 @@ const MobileNav = ({ onOpen, ...rest }) => {
       />
 
       <Text fontSize="2xl" ml="8" fontFamily="monospace" fontWeight="bold">
-        Logo
+        <Box fontSize="4xl" color={useColorModeValue('green.900', 'green.400')}>
+          <GiSemiClosedEye />
+        </Box>
       </Text>
     </Flex>
   );
