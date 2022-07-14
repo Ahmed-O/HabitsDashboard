@@ -63,7 +63,7 @@ export default function Hero() {
                 position: 'absolute',
                 bottom: 1,
                 left: 0,
-                bg: 'green.500',
+                bg: 'green.200',
                 zIndex: -1,
               }}
               color={useColorModeValue('black', 'green.400')}
@@ -86,9 +86,10 @@ export default function Hero() {
             fontWeight={700}
             pl={{ base: '10px', xl: '25px' }}
             pr={{ base: '10px', xl: '25px' }}
+            align="center"
           >
-            A platform intended to serve as a one stop location to get your life
-            back on track and to ensure that you don't miss your targets
+            The one stop location to keep track of your habits and hit your
+            targets
           </Text>
           <Stack
             spacing={{ base: 4, sm: 6 }}
