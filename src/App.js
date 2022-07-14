@@ -42,7 +42,7 @@ import {
 function App() {
   return (
     <ChakraProvider theme={theme}>
-      {/* <BrowserRouter>
+      <BrowserRouter>
         <Routes>
           <Route
             path="/"
@@ -60,12 +60,13 @@ function App() {
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
         </Routes>
-      </BrowserRouter> */}
+      </BrowserRouter>
 
-      <SideBar />
+      {/* <SideBar /> */}
       {/* <TradesTable /> */}
     </ChakraProvider>
   );
 }
 
 export default App;
+

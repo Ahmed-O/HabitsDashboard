@@ -66,9 +66,9 @@ export default function Hero() {
                 bg: 'green.500',
                 zIndex: -1,
               }}
-              color={useColorModeValue('black', 'green.500')}
+              color={useColorModeValue('black', 'green.400')}
             >
-              Trader Dashboard
+              Habits Dashboard
             </Text>
             <br />
             <Text
@@ -77,7 +77,7 @@ export default function Hero() {
               fontSize={{ base: '2xl', sm: '3xl', lg: '5xl' }}
               fontWeight={700}
             >
-              improve your trading today
+              improve your life today
             </Text>
           </Heading>
           <Text
@@ -87,8 +87,8 @@ export default function Hero() {
             pl={{ base: '10px', xl: '25px' }}
             pr={{ base: '10px', xl: '25px' }}
           >
-            A platform for traders by traders intended to serve as a one stop
-            location to analyze your trades and trading performance.
+            A platform intended to serve as a one stop location to get your life
+            back on track and to ensure that you don't miss your targets
           </Text>
           <Stack
             spacing={{ base: 4, sm: 6 }}

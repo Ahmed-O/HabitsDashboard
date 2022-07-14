@@ -20,6 +20,8 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import { AiOutlineClose } from 'react-icons/ai';
 import { GiSemiClosedEye } from 'react-icons/gi';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
+import { targetLogo } from '../images/targetLogo';
+import { MOUNTAIN_BG } from './HeroBackground';
 import { Link as RouterLink } from 'react-router-dom';
 
 const Links = ['Dashboard', 'Resources', 'FAQ'];
@@ -53,13 +55,17 @@ export default function Navbar() {
             display={{ base: 'flex', md: 'none' }}
             onClick={isOpen ? onClose : onOpen}
           />
-          <HStack spacing={8} alignItems={'center'}>
+          <HStack spacing={4} alignItems={'center'}>
             {/* <Box>Logo</Box> */}
             <Box
-              fontSize="6xl"
-              color={useColorModeValue('green.900', 'green.400')}
+              //fontSize="6xl"
+              //color={useColorModeValue('green.900', 'green.400')}
+              p="5"
+              backgroundImage={targetLogo}
+              minH="64px"
+              w="192px"
             >
-              <GiSemiClosedEye />
+              {/* <GiSemiClosedEye /> */}
             </Box>
             <HStack
               as={'nav'}
@@ -78,7 +84,7 @@ export default function Navbar() {
                 Sign In
               </Button>
             </RouterLink>
-            <RouterLink to="/signin">
+            <RouterLink to="/signup">
               <Button variant={'solid'} colorScheme={'teal'} size={'lg'} mr={3}>
                 Sign Up
               </Button>
