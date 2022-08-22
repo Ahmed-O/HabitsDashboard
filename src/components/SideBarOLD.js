@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
 import {
   IconButton,
-  Avatar,
   Box,
   CloseButton,
   Flex,
-  HStack,
-  VStack,
   Icon,
   useColorModeValue,
   Link,
@@ -14,10 +11,12 @@ import {
   DrawerContent,
   Text,
   useDisclosure,
-  BoxProps,
-  FlexProps,
+  Stack,
+  HStack,
+  VStack,
   Menu,
   MenuButton,
+  Avatar,
   MenuDivider,
   MenuItem,
   MenuList,
@@ -29,26 +28,17 @@ import {
   FiStar,
   FiSettings,
   FiMenu,
+  FiDownload,
   FiBell,
   FiChevronDown,
-  FiDownload,
 } from 'react-icons/fi';
+import { GiSemiClosedEye } from 'react-icons/gi';
 import { AiOutlineTable } from 'react-icons/ai';
-import { IconType } from 'react-icons';
-import { ReactText } from 'react';
-import { targetLogo } from '../images/targetLogo';
+import TradesTable from './TradesTable';
 import Home from './Home';
 import Reports from './Reports';
 import Import from './Import';
 import View from './View';
-
-// const LinkItems = [
-//   { name: 'Home', icon: FiHome },
-//   { name: 'Trending', icon: FiTrendingUp },
-//   { name: 'Explore', icon: FiCompass },
-//   { name: 'Favourites', icon: FiStar },
-//   { name: 'Settings', icon: FiSettings },
-// ];
 
 const LinkItems = [
   { name: 'Home', icon: FiHome },
@@ -59,36 +49,36 @@ const LinkItems = [
 
 const LinkComponents = [<Home />, <Reports />, <View />, <Import />];
 
-export default function SidebarWithHeader({ children }) {
+export default function SimpleSidebar({ children }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [currIndex, setCurrIndex] = useState(0);
   return (
-    <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')}>
-      <SidebarContent
-        onClose={() => onClose}
-        setCurrIndex={setCurrIndex}
-        display={{ base: 'none', md: 'block' }}
-      />
-      <Drawer
-        autoFocus={false}
-        isOpen={isOpen}
-        placement="left"
-        onClose={onClose}
-        returnFocusOnClose={false}
-        onOverlayClick={onClose}
-        size="full"
-      >
-        <DrawerContent>
-          <SidebarContent onClose={onClose} setCurrIndex={setCurrIndex} />
-        </DrawerContent>
-      </Drawer>
-      {/* mobilenav */}
-      <MobileNav onOpen={onOpen} />
-      <Box ml={{ base: 0, md: 60 }} p="4">
-        {/* {children} */}
-        {LinkComponents[currIndex]}
+    <Stack direction={{ base: 'column', md: 'row' }} maxW={'100vw'}>
+      <Box bg={useColorModeValue('gray.100', 'gray.900')}>
+        <SidebarContent
+          onClose={() => onClose}
+          setCurrIndex={setCurrIndex}
+          display={{ base: 'none', md: 'block' }}
+        />
+        <Drawer
+          autoFocus={false}
+          isOpen={isOpen}
+          placement="left"
+          onClose={onClose}
+          returnFocusOnClose={false}
+          onOverlayClick={onClose}
+          size="full"
+        >
+          <DrawerContent>
+            <SidebarContent onClose={onClose} setCurrIndex={setCurrIndex} />
+          </DrawerContent>
+        </Drawer>
+        {/* mobilenav */}
+        <MobileNav display={{ base: 'flex', md: 'none' }} onOpen={onOpen} />
+        <Box ml={{ base: 0, md: 60 }}>{children}</Box>
       </Box>
-    </Box>
+      {LinkComponents[currIndex]}
+    </Stack>
   );
 }
 
@@ -98,13 +88,10 @@ const SidebarContent = ({ onClose, setCurrIndex, ...rest }) => {
     else if (pageName === 'Reports') setCurrIndex(1);
     else if (pageName === 'View') setCurrIndex(2);
     else if (pageName === 'Import') setCurrIndex(3);
-    console.log('in the changepage function');
     onClose();
   }
-
   return (
     <Box
-      transition="3s ease"
       bg={useColorModeValue('white', 'gray.900')}
       borderRight="1px"
       borderRightColor={useColorModeValue('gray.200', 'gray.700')}
@@ -113,10 +100,20 @@ const SidebarContent = ({ onClose, setCurrIndex, ...rest }) => {
       h="full"
       {...rest}
     >
-      <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
+      <Flex
+        h="20"
+        alignItems="center"
+        mx="8"
+        justifyContent={{ base: 'space-between', md: 'center' }}
+        my={5}
+      >
         <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          {/* Logo */}
-          <Box p="5" backgroundImage={targetLogo} minH="50px" w="145px"></Box>
+          <Box
+            fontSize="6xl"
+            color={useColorModeValue('green.900', 'green.400')}
+          >
+            <GiSemiClosedEye />
+          </Box>
         </Text>
         <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       </Flex>
@@ -144,9 +141,12 @@ const NavItem = ({ icon, children, ...rest }) => {
         align="center"
         p="4"
         mx="4"
+        my="4"
         borderRadius="lg"
         role="group"
         cursor="pointer"
+        fontSize="24"
+        fontWeight="500"
         _hover={{
           bg: 'cyan.400',
           color: 'white',
@@ -156,7 +156,7 @@ const NavItem = ({ icon, children, ...rest }) => {
         {icon && (
           <Icon
             mr="4"
-            fontSize="16"
+            fontSize="24"
             _groupHover={{
               color: 'white',
             }}
@@ -173,31 +173,26 @@ const MobileNav = ({ onOpen, ...rest }) => {
   return (
     <Flex
       ml={{ base: 0, md: 60 }}
-      px={{ base: 4, md: 4 }}
+      px={{ base: 4, md: 24 }}
       height="20"
       alignItems="center"
       bg={useColorModeValue('white', 'gray.900')}
       borderBottomWidth="1px"
       borderBottomColor={useColorModeValue('gray.200', 'gray.700')}
-      justifyContent={{ base: 'space-between', md: 'flex-end' }}
+      justifyContent="flex-start"
       {...rest}
     >
       <IconButton
-        display={{ base: 'flex', md: 'none' }}
-        onClick={onOpen}
         variant="outline"
+        onClick={onOpen}
         aria-label="open menu"
         icon={<FiMenu />}
       />
 
-      <Text
-        display={{ base: 'flex', md: 'none' }}
-        fontSize="2xl"
-        fontFamily="monospace"
-        fontWeight="bold"
-      >
-        {/* Logo */}
-        <Box p="5" backgroundImage={targetLogo} minH="50px" w="145px"></Box>
+      <Text fontSize="2xl" ml="8" fontFamily="monospace" fontWeight="bold">
+        <Box fontSize="4xl" color={useColorModeValue('green.900', 'green.400')}>
+          <GiSemiClosedEye />
+        </Box>
       </Text>
 
       <HStack spacing={{ base: '0', md: '6' }}>

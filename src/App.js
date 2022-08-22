@@ -27,6 +27,7 @@ import Landing from './components/Landing';
 import Hero from './components/Hero';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
+import SideBarOld from './components/SideBarOLD';
 import SideBar from './components/SideBar';
 import TradesTable from './components/TradesTable';
 import {
