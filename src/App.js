@@ -27,9 +27,7 @@ import Landing from './components/Landing';
 import Hero from './components/Hero';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
-import SideBarOld from './components/SideBarOLD';
 import SideBar from './components/SideBar';
-import TradesTable from './components/TradesTable';
 import {
   HERO_BACKGROUND,
   MOUNTAIN_BG,
@@ -43,7 +41,7 @@ import {
 function App() {
   return (
     <ChakraProvider theme={theme}>
-      <BrowserRouter>
+      {/* <BrowserRouter>
         <Routes>
           <Route
             path="/"
@@ -61,10 +59,9 @@ function App() {
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter> */}
 
-      {/* <SideBar /> */}
-      {/* <TradesTable /> */}
+      <SideBar />
     </ChakraProvider>
   );
 }
