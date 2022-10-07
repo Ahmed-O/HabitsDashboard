@@ -41,7 +41,7 @@ import {
 function App() {
   return (
     <ChakraProvider theme={theme}>
-      {/* <BrowserRouter>
+      <BrowserRouter>
         <Routes>
           <Route
             path="/"
@@ -58,10 +58,11 @@ function App() {
           />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/sidebar" element={<SideBar />} />
         </Routes>
-      </BrowserRouter> */}
+      </BrowserRouter>
 
-      <SideBar />
+      {/* <SideBar /> */}
     </ChakraProvider>
   );
 }

@@ -6,6 +6,12 @@ import {
   Inject,
 } from '@syncfusion/ej2-react-heatmap';
 import data from '../data/calendar-data-source.json';
+import { registerLicense } from '@syncfusion/ej2-base';
+
+// Registering Syncfusion license key
+registerLicense(
+  'ORg4AjUWIQA/Gnt2VVhiQlFadVlJXGFWfVJpTGpQdk5xdV9DaVZUTWY/P1ZhSXxRdk1gWX5Yc3VUR2ZZWUY='
+);
 // import { SampleBase } from '../common/sample-base';
 // import { Internationalization } from '@syncfusion/ej2-base';
 /**
