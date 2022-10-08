@@ -1,8 +1,7 @@
 import React from 'react';
-import CalendarHeatmap from './CalendarHeatmap';
 
 function Home() {
-  return <CalendarHeatmap />;
+  return <div>HOME</div>;
 }
 
 export default Home;
