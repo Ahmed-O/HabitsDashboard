@@ -36,7 +36,7 @@ import {
   BEARVBULL_BG3,
   CHARTS_BG,
   CHARTS_BG2,
-} from './components/HeroBackground';
+} from './images/HeroBackground';
 
 function App() {
   return (

@@ -21,7 +21,7 @@ import { AiOutlineClose } from 'react-icons/ai';
 import { GiSemiClosedEye } from 'react-icons/gi';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 import { targetLogo } from '../images/targetLogo';
-import { MOUNTAIN_BG } from './HeroBackground';
+import { MOUNTAIN_BG } from '../images/HeroBackground';
 import { Link as RouterLink } from 'react-router-dom';
 
 const Links = ['Dashboard', 'Resources', 'FAQ'];

@@ -30,7 +30,7 @@ import {
   BEARVBULL_BG3,
   CHARTS_BG,
   CHARTS_BG2,
-} from './HeroBackground';
+} from '../images/HeroBackground';
 
 export default function SignIn() {
   const [showPassword, setShowPassword] = useState(false);

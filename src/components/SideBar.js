@@ -40,7 +40,7 @@ import { targetLogo } from '../images/targetLogo';
 import Home from './Home';
 import Reports from './Reports';
 import Import from './Import';
-import View from './View';
+import Habits from './Habits';
 
 // const LinkItems = [
 //   { name: 'Home', icon: FiHome },
@@ -53,11 +53,11 @@ import View from './View';
 const LinkItems = [
   { name: 'Home', icon: FiHome },
   { name: 'Reports', icon: FiTrendingUp },
-  { name: 'View', icon: AiOutlineTable },
+  { name: 'Habits', icon: AiOutlineTable },
   { name: 'Import', icon: FiDownload },
 ];
 
-const LinkComponents = [<Home />, <Reports />, <View />, <Import />];
+const LinkComponents = [<Home />, <Reports />, <Habits />, <Import />];
 
 export default function SidebarWithHeader({ children }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -96,7 +96,7 @@ const SidebarContent = ({ onClose, setCurrIndex, ...rest }) => {
   function changePage(pageName) {
     if (pageName === 'Home') setCurrIndex(0);
     else if (pageName === 'Reports') setCurrIndex(1);
-    else if (pageName === 'View') setCurrIndex(2);
+    else if (pageName === 'Habits') setCurrIndex(2);
     else if (pageName === 'Import') setCurrIndex(3);
     console.log('in the changepage function');
     onClose();
