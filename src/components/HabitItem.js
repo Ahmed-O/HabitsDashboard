@@ -6,11 +6,11 @@ const List = ({ items, removeItem, editItem }) => {
   return (
     <Flex justify="space-between" direction="column" className="grocery-list">
       {items.map(item => {
-        const { id, title } = item;
+        const { id, title, unit, value } = item;
         return (
           <Flex justify="space-between" className="grocery-item" key={id}>
             <Text fontSize="2xl" className="title">
-              {title}
+              {`${title} - ${value} ${unit}`}
             </Text>
             <Flex className="btn-container">
               <Button

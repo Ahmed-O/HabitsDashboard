@@ -27,34 +27,48 @@ const getLocalStorage = () => {
 };
 function Habits() {
   const [name, setName] = useState('');
+  const [value, setValue] = useState(10);
+  const [unit, setUnit] = useState('');
   const [list, setList] = useState(getLocalStorage());
   const [isEditing, setIsEditing] = useState(false);
   const [editID, setEditID] = useState(null);
   const [alert, setAlert] = useState({ show: false, msg: '', type: '' });
   const handleSubmit = e => {
     console.log('In the handle submit');
+    console.log(`name is ${name}`);
+    console.log(`unit is ${unit}`);
+    console.log(`value is ${value}`);
     e.preventDefault();
-    if (!name) {
-      showAlert(true, 'danger', 'please enter value');
-    } else if (name && isEditing) {
+    if (!name || !value || !unit) {
+      showAlert(true, 'danger', 'please enter all values');
+    } else if (name && value && unit && isEditing) {
       setList(
         list.map(item => {
           if (item.id === editID) {
-            return { ...item, title: name };
+            return { ...item, title: name, value: value, unit: unit };
           }
           return item;
         })
       );
       setName('');
+      //setValue(0);
+      setUnit('');
       setEditID(null);
       setIsEditing(false);
       showAlert(true, 'success', 'value changed');
     } else {
       showAlert(true, 'success', 'item added to the list');
-      const newItem = { id: new Date().getTime().toString(), title: name };
+      const newItem = {
+        id: new Date().getTime().toString(),
+        title: name,
+        value: value,
+        unit: unit,
+      };
 
       setList([...list, newItem]);
       setName('');
+      //setValue(0);
+      setUnit('');
     }
   };
 
@@ -74,6 +88,8 @@ function Habits() {
     setIsEditing(true);
     setEditID(id);
     setName(specificItem.title);
+    setValue(specificItem.value);
+    setUnit(specificItem.unit);
   };
   useEffect(() => {
     localStorage.setItem('list', JSON.stringify(list));
@@ -114,7 +130,7 @@ function Habits() {
             <Text fontSize="lg" as="u">
               Value
             </Text>
-            <NumberInput>
+            <NumberInput onChange={value => setValue(value)}>
               <NumberInputField placeholder="10" />
               <NumberInputStepper>
                 <NumberIncrementStepper />
@@ -133,8 +149,8 @@ function Habits() {
               placeholder="e.g. minutes"
               size="md"
               //width="50%"
-              value={name}
-              onChange={e => setName(e.target.value)}
+              value={unit}
+              onChange={e => setUnit(e.target.value)}
             />
           </VStack>
 
