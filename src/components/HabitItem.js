@@ -9,7 +9,7 @@ const List = ({ items, removeItemModal, editItem }) => {
         const { id, title, unit, value } = item;
         return (
           <Flex justify="space-between" key={id}>
-            <Text fontSize="2xl">{`${title} - ${value} ${unit}`}</Text>
+            <Text fontSize="xl">{`${title} - ${value} ${unit}`}</Text>
             <Flex>
               <Button type="button" color="green" onClick={() => editItem(id)}>
                 <FaEdit />

@@ -117,7 +117,7 @@ function Habits() {
         </Center>
         <HStack p="20px" justify="center" align="center" spacing="20px">
           <VStack width="90%" align="flex-start">
-            <Text fontSize="lg" as="u">
+            <Text fontSize="2xl" as="u">
               Name
             </Text>
             <Input
@@ -131,7 +131,7 @@ function Habits() {
           </VStack>
 
           <VStack width="30%" align="flex-start">
-            <Text fontSize="lg" as="u">
+            <Text fontSize="2xl" as="u">
               Value
             </Text>
             <NumberInput onChange={value => setValue(value)}>
@@ -144,7 +144,7 @@ function Habits() {
           </VStack>
 
           <VStack width="90%" align="flex-start">
-            <Text fontSize="lg" as="u">
+            <Text fontSize="2xl" as="u">
               Unit
             </Text>
             <Input
@@ -177,7 +177,7 @@ function Habits() {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Remove Habit</ModalHeader>
+          <ModalHeader textAlign="center">Remove Habit</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <Text>
