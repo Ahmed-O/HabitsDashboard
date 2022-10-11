@@ -16,6 +16,14 @@ import {
   NumberInputStepper,
   NumberIncrementStepper,
   NumberDecrementStepper,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
 } from '@chakra-ui/react';
 const getLocalStorage = () => {
   let list = localStorage.getItem('list');
@@ -32,15 +40,16 @@ function Habits() {
   const [list, setList] = useState(getLocalStorage());
   const [isEditing, setIsEditing] = useState(false);
   const [editID, setEditID] = useState(null);
+  const [removeID, setRemoveID] = useState(null);
   const [alert, setAlert] = useState({ show: false, msg: '', type: '' });
+
+  // Modal functions
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   const handleSubmit = e => {
-    console.log('In the handle submit');
-    console.log(`name is ${name}`);
-    console.log(`unit is ${unit}`);
-    console.log(`value is ${value}`);
     e.preventDefault();
     if (!name || !value || !unit) {
-      showAlert(true, 'danger', 'please enter all values');
+      showAlert(true, 'remove', 'Please enter all values');
     } else if (name && value && unit && isEditing) {
       setList(
         list.map(item => {
@@ -51,13 +60,12 @@ function Habits() {
         })
       );
       setName('');
-      //setValue(0);
       setUnit('');
       setEditID(null);
       setIsEditing(false);
-      showAlert(true, 'success', 'value changed');
+      showAlert(true, 'add', 'Habit successfully changed');
     } else {
-      showAlert(true, 'success', 'item added to the list');
+      showAlert(true, 'add', 'New habit successfully added');
       const newItem = {
         id: new Date().getTime().toString(),
         title: name,
@@ -67,7 +75,6 @@ function Habits() {
 
       setList([...list, newItem]);
       setName('');
-      //setValue(0);
       setUnit('');
     }
   };
@@ -75,13 +82,17 @@ function Habits() {
   const showAlert = (show = false, type = '', msg = '') => {
     setAlert({ show, type, msg });
   };
-  // const clearList = () => {
-  //   showAlert(true, 'danger', 'empty list');
-  //   setList([]);
-  // };
-  const removeItem = id => {
-    showAlert(true, 'danger', 'item removed');
-    setList(list.filter(item => item.id !== id));
+
+  const removeItemModal = id => {
+    setRemoveID(id);
+    onOpen();
+  };
+
+  const removeItem = () => {
+    showAlert(true, 'remove', 'Habit successfully removed');
+    setList(list.filter(item => item.id !== removeID));
+    onClose();
+    setRemoveID(null);
   };
   const editItem = id => {
     const specificItem = list.find(item => item.id === id);
@@ -95,8 +106,8 @@ function Habits() {
     localStorage.setItem('list', JSON.stringify(list));
   }, [list]);
   return (
-    <Flex flexDirection="column" className="section-center">
-      <FormControl className="grocery-form">
+    <Flex flexDirection="column">
+      <FormControl>
         {alert.show && <Alert {...alert} removeAlert={showAlert} list={list} />}
 
         <Center>
@@ -104,20 +115,13 @@ function Habits() {
             Habits List
           </Heading>
         </Center>
-        <HStack
-          p="20px"
-          justify="center"
-          align="center"
-          spacing="20px"
-          className="form-control"
-        >
+        <HStack p="20px" justify="center" align="center" spacing="20px">
           <VStack width="90%" align="flex-start">
             <Text fontSize="lg" as="u">
               Name
             </Text>
             <Input
               type="text"
-              className="grocery"
               placeholder="e.g. Read"
               size="md"
               value={name}
@@ -145,7 +149,6 @@ function Habits() {
             </Text>
             <Input
               type="text"
-              className="grocery"
               placeholder="e.g. minutes"
               size="md"
               //width="50%"
@@ -156,30 +159,42 @@ function Habits() {
 
           <VStack>
             <Text visibility="hidden">DummyText</Text>
-            <Button
-              type="submit"
-              className="submit-btn"
-              colorScheme="twitter"
-              onClick={handleSubmit}
-            >
+            <Button type="submit" colorScheme="twitter" onClick={handleSubmit}>
               {isEditing ? 'Edit' : 'Submit'}
             </Button>
           </VStack>
         </HStack>
       </FormControl>
       {list.length > 0 && (
-        <Flex
-          direction="column"
-          justify="space-between"
-          px="15px"
-          className="grocery-container"
-        >
-          <List items={list} removeItem={removeItem} editItem={editItem} />
-          {/* <Button className="clear-btn" onClick={clearList}>
-            clear items
-          </Button> */}
+        <Flex direction="column" justify="space-between" px="15px">
+          <List
+            items={list}
+            removeItemModal={removeItemModal}
+            editItem={editItem}
+          />
         </Flex>
       )}
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Remove Habit</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <Text>
+              Are you sure you want to remove this habit from your list?
+            </Text>
+          </ModalBody>
+
+          <ModalFooter>
+            <Button colorScheme="red" mr={3} onClick={removeItem}>
+              Yes
+            </Button>
+            <Button variant="ghost" onClick={onClose}>
+              No, Keep Habit
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </Flex>
   );
 }

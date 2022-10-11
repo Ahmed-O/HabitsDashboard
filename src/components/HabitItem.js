@@ -1,31 +1,23 @@
 import React from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa';
-import { Box, Button, Flex, Text } from '@chakra-ui/react';
+import { Button, Flex, Text } from '@chakra-ui/react';
 
-const List = ({ items, removeItem, editItem }) => {
+const List = ({ items, removeItemModal, editItem }) => {
   return (
-    <Flex justify="space-between" direction="column" className="grocery-list">
+    <Flex justify="space-between" direction="column">
       {items.map(item => {
         const { id, title, unit, value } = item;
         return (
-          <Flex justify="space-between" className="grocery-item" key={id}>
-            <Text fontSize="2xl" className="title">
-              {`${title} - ${value} ${unit}`}
-            </Text>
-            <Flex className="btn-container">
-              <Button
-                type="button"
-                color="green"
-                className="edit-btn"
-                onClick={() => editItem(id)}
-              >
+          <Flex justify="space-between" key={id}>
+            <Text fontSize="2xl">{`${title} - ${value} ${unit}`}</Text>
+            <Flex>
+              <Button type="button" color="green" onClick={() => editItem(id)}>
                 <FaEdit />
               </Button>
               <Button
                 type="button"
                 color="red"
-                className="delete-btn"
-                onClick={() => removeItem(id)}
+                onClick={() => removeItemModal(id)}
               >
                 <FaTrash />
               </Button>
