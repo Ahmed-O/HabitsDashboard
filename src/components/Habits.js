@@ -25,6 +25,10 @@ import {
   ModalCloseButton,
   useDisclosure,
 } from '@chakra-ui/react';
+import { useSelector, useDispatcher } from 'react-redux';
+
+
+
 const getLocalStorage = () => {
   let list = localStorage.getItem('list');
   if (list) {
@@ -33,6 +37,9 @@ const getLocalStorage = () => {
     return [];
   }
 };
+
+// const { habitsList } = useSelector(state => state.habitsList);
+
 function Habits() {
   const [name, setName] = useState('');
   const [value, setValue] = useState(10);

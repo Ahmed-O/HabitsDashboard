@@ -5,10 +5,10 @@ import { Flex, VStack } from '@chakra-ui/react';
 
 function HeatmapCalendar() {
   return (
-    <Flex minH="500px" minW="100%">
+    <Flex height="300px" minW="100%">
       <ResponsiveCalendar
         data={data}
-        from="2022-01-02  "
+        from="2022-01-02"
         to="2022-12-31"
         emptyColor="#eeeeee"
         // colors={['#61cdbb', '#97e3d5', '#e8c1a0', '#f47560']}
