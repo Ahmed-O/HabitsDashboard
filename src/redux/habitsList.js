@@ -1,10 +1,10 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, current } from '@reduxjs/toolkit';
 
 const initialState = {
   habitsList: [
-    { id: '1665447489829', title: 'Read', value: '10', unit: 'minutes' },
+    { id: '1665447489829', title: 'Read', value: '10', unit: 'pages' },
     { id: '1665447650738', title: 'Meditate', value: '15', unit: 'minutes' },
-    { id: '1665507279182', title: 'Code', value: '6', unit: 'hours' },
+    { id: '1665507279182', title: 'Code', value: '8', unit: 'hours' },
   ],
 };
 
@@ -13,6 +13,12 @@ export const habitsListSlice = createSlice({
   name: 'habitsList',
   initialState,
   reducers: {
+    removeHabit: (state, action) => {
+      const removeID = action.payload.removeID;
+      const { habitsList } = current(state);
+      const index = habitsList.findIndex(habit => removeID === habit.id);
+      state.habitsList.splice(index, 1);
+    },
     increment: state => {
       state.value += 1;
     },
@@ -26,7 +32,7 @@ export const habitsListSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount } =
+export const { removeHabit, increment, decrement, incrementByAmount } =
   habitsListSlice.actions;
 
 export default habitsListSlice.reducer;

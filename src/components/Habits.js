@@ -25,9 +25,8 @@ import {
   ModalCloseButton,
   useDisclosure,
 } from '@chakra-ui/react';
-import { useSelector, useDispatcher } from 'react-redux';
-
-
+import { useSelector, useDispatch } from 'react-redux';
+import { removeHabit } from '../redux/habitsList.js';
 
 const getLocalStorage = () => {
   let list = localStorage.getItem('list');
@@ -41,10 +40,13 @@ const getLocalStorage = () => {
 // const { habitsList } = useSelector(state => state.habitsList);
 
 function Habits() {
+  const { habitsList } = useSelector(state => state.habitsList);
+  const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [value, setValue] = useState(10);
   const [unit, setUnit] = useState('');
-  const [list, setList] = useState(getLocalStorage());
+  // const [list, setList] = useState(getLocalStorage());
+  const [list, setList] = useState(habitsList);
   const [isEditing, setIsEditing] = useState(false);
   const [editID, setEditID] = useState(null);
   const [removeID, setRemoveID] = useState(null);
@@ -96,8 +98,10 @@ function Habits() {
   };
 
   const removeItem = () => {
+    dispatch(removeHabit({ removeID: removeID }));
     showAlert(true, 'remove', 'Habit successfully removed');
-    setList(list.filter(item => item.id !== removeID));
+    // setList(list.filter(item => item.id !== removeID));
+    //setList(list);
     onClose();
     setRemoveID(null);
   };
@@ -110,8 +114,10 @@ function Habits() {
     setUnit(specificItem.unit);
   };
   useEffect(() => {
-    localStorage.setItem('list', JSON.stringify(list));
-  }, [list]);
+    console.log('In use effect');
+    // localStorage.setItem('list', JSON.stringify(list));
+    setList(habitsList);
+  }, [habitsList]);
   return (
     <Flex flexDirection="column">
       <FormControl>
@@ -193,7 +199,12 @@ function Habits() {
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme="red" mr={3} onClick={removeItem}>
+            <Button
+              colorScheme="red"
+              mr={3}
+              onClick={removeItem}
+              //onClick={() => dispatch(removeHabit({ removeID: removeID }))}
+            >
               Yes
             </Button>
             <Button variant="ghost" onClick={onClose}>
