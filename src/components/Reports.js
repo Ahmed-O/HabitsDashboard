@@ -1,7 +1,8 @@
 import React from 'react';
+import LineGraph from './LineGraph';
 
 function Reports() {
-  return <div>REPORTS</div>;
+  return <LineGraph />;
 }
 
 export default Reports;

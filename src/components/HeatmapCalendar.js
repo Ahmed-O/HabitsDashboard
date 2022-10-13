@@ -1,6 +1,6 @@
 import React from 'react';
 import { ResponsiveCalendar } from '@nivo/calendar';
-import data from '../data/data.json';
+import data from '../data/heatmapData.json';
 import { Flex, VStack } from '@chakra-ui/react';
 
 function HeatmapCalendar() {
