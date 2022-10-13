@@ -8,31 +8,35 @@ const initialState = {
   ],
 };
 
-// TODO - Reducers for adding a habit, editing a habit and removing a habit
 export const habitsListSlice = createSlice({
   name: 'habitsList',
   initialState,
   reducers: {
+    addHabit: (state, action) => {
+      const newHabit = action.payload.newHabit;
+      state.habitsList.push(newHabit);
+    },
     removeHabit: (state, action) => {
       const removeID = action.payload.removeID;
       const { habitsList } = current(state);
       const index = habitsList.findIndex(habit => removeID === habit.id);
       state.habitsList.splice(index, 1);
     },
-    increment: state => {
-      state.value += 1;
-    },
-    decrement: state => {
-      state.value -= 1;
-    },
-    incrementByAmount: (state, action) => {
-      state.value += action.payload;
+    editHabit: (state, action) => {
+      const { editID, title, value, unit } = action.payload;
+      console.log('In edit habit: ');
+      console.log(editID, title, value, unit);
+      state.habitsList.forEach(item => {
+        if (item.id === editID) {
+          item.title = title;
+          item.value = value;
+          item.unit = unit;
+        }
+      });
     },
   },
 });
 
-// Action creators are generated for each case reducer function
-export const { removeHabit, increment, decrement, incrementByAmount } =
-  habitsListSlice.actions;
+export const { removeHabit, addHabit, editHabit } = habitsListSlice.actions;
 
 export default habitsListSlice.reducer;

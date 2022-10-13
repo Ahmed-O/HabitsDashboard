@@ -26,31 +26,32 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeHabit } from '../redux/habitsList.js';
+import { removeHabit, addHabit, editHabit } from '../redux/habitsList.js';
 
-const getLocalStorage = () => {
-  let list = localStorage.getItem('list');
-  if (list) {
-    return (list = JSON.parse(localStorage.getItem('list')));
-  } else {
-    return [];
-  }
-};
+// const getLocalStorage = () => {
+//   let list = localStorage.getItem('list');
+//   if (list) {
+//     return (list = JSON.parse(localStorage.getItem('list')));
+//   } else {
+//     return [];
+//   }
+// };
 
 // const { habitsList } = useSelector(state => state.habitsList);
 
 function Habits() {
   const { habitsList } = useSelector(state => state.habitsList);
+  const [list, setList] = useState(habitsList);
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [value, setValue] = useState(10);
   const [unit, setUnit] = useState('');
   // const [list, setList] = useState(getLocalStorage());
-  const [list, setList] = useState(habitsList);
   const [isEditing, setIsEditing] = useState(false);
   const [editID, setEditID] = useState(null);
   const [removeID, setRemoveID] = useState(null);
   const [alert, setAlert] = useState({ show: false, msg: '', type: '' });
+  const [borderColor, setBorderColor] = useState('gray.300');
 
   // Modal functions
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -60,29 +61,34 @@ function Habits() {
     if (!name || !value || !unit) {
       showAlert(true, 'remove', 'Please enter all values');
     } else if (name && value && unit && isEditing) {
-      setList(
-        list.map(item => {
-          if (item.id === editID) {
-            return { ...item, title: name, value: value, unit: unit };
-          }
-          return item;
-        })
+      dispatch(
+        editHabit({ editID: editID, title: name, value: value, unit: unit })
       );
+      // setList(
+      //   list.map(item => {
+      //     if (item.id === editID) {
+      //       return { ...item, title: name, value: value, unit: unit };
+      //     }
+      //     return item;
+      //   })
+      // );
       setName('');
       setUnit('');
       setEditID(null);
       setIsEditing(false);
+      setBorderColor('gray.300');
       showAlert(true, 'add', 'Habit successfully changed');
     } else {
       showAlert(true, 'add', 'New habit successfully added');
-      const newItem = {
+      const newHabit = {
         id: new Date().getTime().toString(),
         title: name,
         value: value,
         unit: unit,
       };
 
-      setList([...list, newItem]);
+      dispatch(addHabit({ newHabit: newHabit }));
+      // setList([...list, newHabit]);
       setName('');
       setUnit('');
     }
@@ -108,13 +114,13 @@ function Habits() {
   const editItem = id => {
     const specificItem = list.find(item => item.id === id);
     setIsEditing(true);
+    setBorderColor('green.200');
     setEditID(id);
     setName(specificItem.title);
     setValue(specificItem.value);
     setUnit(specificItem.unit);
   };
   useEffect(() => {
-    console.log('In use effect');
     // localStorage.setItem('list', JSON.stringify(list));
     setList(habitsList);
   }, [habitsList]);
@@ -139,6 +145,8 @@ function Habits() {
               size="md"
               value={name}
               //width="50%"
+              border="thick double"
+              borderColor={borderColor}
               onChange={e => setName(e.target.value)}
             />
           </VStack>
@@ -148,7 +156,11 @@ function Habits() {
               Value
             </Text>
             <NumberInput onChange={value => setValue(value)}>
-              <NumberInputField placeholder="10" />
+              <NumberInputField
+                placeholder="10"
+                border="thick double"
+                borderColor={borderColor}
+              />
               <NumberInputStepper>
                 <NumberIncrementStepper />
                 <NumberDecrementStepper />
@@ -166,6 +178,8 @@ function Habits() {
               size="md"
               //width="50%"
               value={unit}
+              border="thick double"
+              borderColor={borderColor}
               onChange={e => setUnit(e.target.value)}
             />
           </VStack>
