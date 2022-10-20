@@ -22,7 +22,7 @@ function LineGraph() {
         axisRight={null}
         axisBottom={{
           orient: 'bottom',
-          tickSize: 5,
+          tickSize: 10,
           tickPadding: 5,
           tickRotation: 0,
           legend: 'Date',

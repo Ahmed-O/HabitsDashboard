@@ -39,7 +39,7 @@ import { ReactText } from 'react';
 import { targetLogo } from '../images/targetLogo';
 import Home from './Home';
 import Reports from './Reports';
-import Import from './Import';
+import Resources from './Resources';
 import Habits from './Habits';
 
 // const LinkItems = [
@@ -54,10 +54,10 @@ const LinkItems = [
   { name: 'Home', icon: FiHome },
   { name: 'Reports', icon: FiTrendingUp },
   { name: 'Habits', icon: AiOutlineTable },
-  { name: 'Import', icon: FiDownload },
+  { name: 'Resources', icon: FiDownload },
 ];
 
-const LinkComponents = [<Home />, <Reports />, <Habits />, <Import />];
+const LinkComponents = [<Home />, <Reports />, <Habits />, <Resources />];
 
 export default function SidebarWithHeader({ children }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -97,7 +97,7 @@ const SidebarContent = ({ onClose, setCurrIndex, ...rest }) => {
     if (pageName === 'Home') setCurrIndex(0);
     else if (pageName === 'Reports') setCurrIndex(1);
     else if (pageName === 'Habits') setCurrIndex(2);
-    else if (pageName === 'Import') setCurrIndex(3);
+    else if (pageName === 'Resources') setCurrIndex(3);
     console.log('in the changepage function');
     onClose();
   }
