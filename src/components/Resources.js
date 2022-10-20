@@ -6,9 +6,9 @@ import blogData from '../data/blogData.json';
 function Resources() {
   return (
     <Flex gap="10px" flexWrap="wrap">
-      <BlogResource />
-      {/* <BlogResource />
-      <BlogResource /> */}
+      {blogData.map(blog => {
+        return <BlogResource blogData={blog} />;
+      })}
     </Flex>
   );
 }

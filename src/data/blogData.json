@@ -2,10 +2,31 @@
     {
        "blogName": "The Ultimate Habit Tracker Guide: Why and How to Track Your Habits",
        "blogImage": "https://jamesclear.com/wp-content/uploads/2019/01/clear-habit-journal_gallery_hi-res_03.jpg",
-       "description": "A habit tracker is a simple way to measure whether you did a habit. The most basic format is to get a calendar and cross off each day you stick with your ...",
+       "description": "If you want to stick with a habit for good, one simple and effective thing you can do is keep a habit tracker. Here's why: Elite performers will often measure, quantify, and track their progress in various ways. Each little measurement provides feedback. It offers a signal of whether they are making progress or need to change course.",
        "authorName": "James Clear",
        "authorImage": "https://i0.wp.com/blog.rescuetime.com/wp-content/uploads/2018/01/james-clear-smiling-wide-1400-1.jpg?fit=1400%2C870&ssl=1",
        "date": "Nov 17, 2020",
-       "link": "https://jamesclear.com/habit-tracker"
+       "link": "https://jamesclear.com/habit-tracker",
+       "type": "Article"
+    },
+    {
+       "blogName": "Build or Break Habits Using Science-Based Tools",
+       "blogImage": "https://149631547.v2.pressablecdn.com/wp-content/uploads/2022/01/Episode-Card-53.jpg",
+       "description": "This month, I want to provide you with actionable information in a condensed form about habits: how to form habits and how to break them...During the episode, I describe two program frameworks for habits that are aligned with our biology and neurochemistry, which makes forming great habits and breaking bad habits much easier. They work best when combined.",
+       "authorName": "Andrew Huberman",
+       "authorImage": "https://yt3.ggpht.com/5ONImZvpa9_hYK12Xek2E2JLzRc732DWsZMX2F-AZ1cTutTQLBuAmcEtFwrCgypqJncl5HrV2w=s900-c-k-c0x00ffffff-no-rj",
+       "date": "Jan 03, 2022",
+       "link": "https://hubermanlab.com/build-or-break-habits-using-science-based-tools/",
+       "type": "Newsletter"
+    },
+    {
+       "blogName": "The Guide to Habits",
+       "blogImage": "https://markmanson.net/wp-content/uploads/2020/07/mark-manson-share-image.jpg",
+       "description": "This month, I want to provide you with actionable information in a condensed form about habits: how to form habits and how to break them... During the episode, I describe two program frameworks for habits that are aligned with our biology and neurochemistry, which makes forming great habits and breaking bad habits much easier. They work best when combined.",
+       "authorName": "Mark Manson",
+       "authorImage": "https://pbs.twimg.com/profile_images/1204727725836996608/ByShSrLR_400x400.jpg",
+       "date": "July 08, 2018",
+       "link": "https://markmanson.net/downloads/habits-ebook",
+       "type": "Guide"
     }
 ]

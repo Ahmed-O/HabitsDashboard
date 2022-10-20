@@ -11,7 +11,17 @@ import {
   Link,
 } from '@chakra-ui/react';
 
-function BlogResource() {
+function BlogResource(blogData) {
+  const {
+    authorImage,
+    authorName,
+    blogImage,
+    blogName,
+    date,
+    description,
+    link,
+    type,
+  } = blogData.blogData;
   return (
     <Center py={6}>
       <Box
@@ -24,7 +34,7 @@ function BlogResource() {
         overflow={'hidden'}
       >
         <Box
-          h={'210px'}
+          h={'300px'}
           bg={'gray.100'}
           mt={-6}
           mx={-6}
@@ -32,12 +42,7 @@ function BlogResource() {
           pos={'relative'}
           overflow={'hidden'}
         >
-          <Image
-            src={
-              'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
-            }
-            objectFit="contain"
-          />
+          <Image src={blogImage} objectFit="contain" />
         </Box>
         <Stack>
           <Text
@@ -47,32 +52,24 @@ function BlogResource() {
             fontSize={'sm'}
             letterSpacing={1.1}
           >
-            Blog
+            {type}
           </Text>
           <Heading
             color={useColorModeValue('gray.700', 'white')}
             fontSize={'2xl'}
             fontFamily={'body'}
           >
-            Boost your conversion rate
+            {blogName}
           </Heading>
-          <Text color={'gray.500'}>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-            erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-            et ea rebum.
-          </Text>
+          <Text color={'gray.500'}>{description}</Text>
         </Stack>
         <Stack mt={6} direction={'row'} spacing={4} align={'center'}>
-          <Avatar
-            src={'https://avatars0.githubusercontent.com/u/1164541?v=4'}
-            alt={'Author'}
-          />
+          <Avatar src={authorImage} alt={'Author'} />
           <Stack direction={'column'} spacing={0} fontSize={'sm'}>
-            <Text fontWeight={600}>Achim Rolle</Text>
+            <Text fontWeight={600}>{authorName}</Text>
             <Text color={'gray.500'}>
-              Feb 08, 2021 ·{' '}
-              <Link href="#" color={'blue.500'}>
+              {date} ·{' '}
+              <Link href={link} color={'blue.500'} isExternal>
                 Read More
               </Link>
             </Text>
