@@ -8,13 +8,14 @@ import {
   Avatar,
   useColorModeValue,
   Image,
+  Link,
 } from '@chakra-ui/react';
 
 function BlogResource() {
   return (
     <Center py={6}>
       <Box
-        maxW={'445px'}
+        minW={{ base: '350px', md: '450px' }}
         w={'full'}
         bg={useColorModeValue('white', 'gray.900')}
         boxShadow={'2xl'}
@@ -29,6 +30,7 @@ function BlogResource() {
           mx={-6}
           mb={6}
           pos={'relative'}
+          overflow={'hidden'}
         >
           <Image
             src={
@@ -68,7 +70,12 @@ function BlogResource() {
           />
           <Stack direction={'column'} spacing={0} fontSize={'sm'}>
             <Text fontWeight={600}>Achim Rolle</Text>
-            <Text color={'gray.500'}>Feb 08, 2021 · 6min read</Text>
+            <Text color={'gray.500'}>
+              Feb 08, 2021 ·{' '}
+              <Link href="#" color={'blue.500'}>
+                Read More
+              </Link>
+            </Text>
           </Stack>
         </Stack>
       </Box>

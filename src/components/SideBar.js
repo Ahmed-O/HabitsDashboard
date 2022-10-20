@@ -33,6 +33,7 @@ import {
   FiChevronDown,
   FiDownload,
 } from 'react-icons/fi';
+import { BsInboxes } from 'react-icons/bs';
 import { AiOutlineTable } from 'react-icons/ai';
 import { IconType } from 'react-icons';
 import { ReactText } from 'react';
@@ -54,7 +55,7 @@ const LinkItems = [
   { name: 'Home', icon: FiHome },
   { name: 'Reports', icon: FiTrendingUp },
   { name: 'Habits', icon: AiOutlineTable },
-  { name: 'Resources', icon: FiDownload },
+  { name: 'Resources', icon: BsInboxes },
 ];
 
 const LinkComponents = [<Home />, <Reports />, <Habits />, <Resources />];
