@@ -99,6 +99,10 @@ function Habits() {
   };
 
   const removeItemModal = id => {
+    if (isEditing) {
+      showAlert(true, 'add', 'Please finish editing current habit');
+      return;
+    }
     setRemoveID(id);
     onOpen();
   };
