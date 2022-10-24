@@ -79,7 +79,7 @@ export default function Navbar() {
             </HStack>
           </HStack>
           <Flex alignItems={'center'}>
-            <RouterLink to="/sidebar">
+            <RouterLink to="/mainpage">
               <Button variant={'solid'} colorScheme={'teal'} size={'lg'} mr={3}>
                 Demo
               </Button>

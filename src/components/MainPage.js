@@ -60,7 +60,7 @@ const LinkItems = [
 
 const LinkComponents = [<Home />, <Reports />, <Habits />, <Resources />];
 
-export default function SidebarWithHeader({ children }) {
+export default function MainPage() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [currIndex, setCurrIndex] = useState(0);
   return (
@@ -219,7 +219,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
                 <Avatar
                   size={'sm'}
                   src={
-                    'https://images.unsplash.com/photo-1619946794135-5bc917a27793?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9'
+                    'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
                   }
                 />
                 <VStack
@@ -229,9 +229,9 @@ const MobileNav = ({ onOpen, ...rest }) => {
                   ml="2"
                 >
                   <Text fontSize="sm">Bob Marley</Text>
-                  <Text fontSize="xs" color="gray.600">
+                  {/* <Text fontSize="xs" color="gray.600">
                     Admin
-                  </Text>
+                  </Text> */}
                 </VStack>
                 <Box display={{ base: 'none', md: 'flex' }}>
                   <FiChevronDown />
@@ -244,7 +244,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
             >
               <MenuItem>Profile</MenuItem>
               <MenuItem>Settings</MenuItem>
-              <MenuItem>Billing</MenuItem>
+              <MenuItem>Donate</MenuItem>
               <MenuDivider />
               <MenuItem>Sign out</MenuItem>
             </MenuList>
