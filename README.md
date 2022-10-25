@@ -15,7 +15,7 @@ and then track their progress using a calendar heatmap and graph.
 
 
 # Technical Details 
-<ins>Languages</ins>: JSX, CSS, Javascript  
+<ins>Languages</ins>: HTML/CSS, Javascript  
 <ins>Libraries/Dependencies</ins>: React, Redux, ChakraUI, Nivo
 
 * Styling done using ChakraUI (https://chakra-ui.com/)
