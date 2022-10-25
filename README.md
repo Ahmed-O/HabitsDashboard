@@ -4,7 +4,7 @@
 # Description
 
 Front end for a dashboard that allows users to curate a list of quantifiable habits
-and then track their progress using a calendar heatmap and graph. 
+and then track their progress using a calendar heatmap and a line graph. 
 
 <br/>
 
