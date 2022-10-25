@@ -138,7 +138,13 @@ function Habits() {
             Habits List
           </Heading>
         </Center>
-        <HStack p="20px" justify="center" align="center" spacing="20px">
+        <Flex
+          p="20px"
+          direction={{ base: 'column', md: 'row' }}
+          justify="center"
+          align={{ sm: 'left', md: 'center' }}
+          gap="20px"
+        >
           <VStack width="90%" align="flex-start">
             <Text fontSize="2xl" as="u">
               Name
@@ -155,7 +161,7 @@ function Habits() {
             />
           </VStack>
 
-          <VStack width="30%" align="flex-start">
+          <VStack width="30%" minW="85px" align="flex-start">
             <Text fontSize="2xl" as="u">
               Value
             </Text>
@@ -194,7 +200,7 @@ function Habits() {
               {isEditing ? 'Edit' : 'Submit'}
             </Button>
           </VStack>
-        </HStack>
+        </Flex>
       </FormControl>
       {list.length > 0 && (
         <Flex direction="column" justify="space-between" px="15px">

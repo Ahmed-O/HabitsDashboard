@@ -5,7 +5,12 @@ import { Flex, VStack } from '@chakra-ui/react';
 
 function HeatmapCalendar() {
   return (
-    <Flex height="300px" minW="100%">
+    <Flex
+      height={{ sm: '200px', md: '300px' }}
+      minW="375px"
+      w="100%"
+      align={'left'}
+    >
       <ResponsiveCalendar
         data={data}
         from="2022-01-02"
